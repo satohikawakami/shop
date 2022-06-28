@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/common::head"></head>
+<body>
+	<!-- ヘッダー -->
+	<header th:replace="layouts/common::header"></header>
+	<!--ヘッダー終わり  -->
+	<main>
+		<div class="container">
+			<h2 class="display-6 text-center mb-4">User List</h2>
+			<h3 class="bg-info text-center" th:text="${createComplete}"></h3>
+			<h3 class="bg-info text-center" th:text="${update}"></h3>
+			<h3 class="bg-danger text-center" th:text="${delete}"></h3>
+			<div class="text-end">
+				<a class="btn btn-primary" href="../creationForm.html" th:href="@{/users/creationForm}">新規登録</a>
+			</div>
+			<div class="table-responsive">
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th style="width: 25%;">User Name</th>
+							<th style="width: 25%;">PassWord</th>
+							<th style="width: 25%;">Authority</th>
+							<th style="width: 25%;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${userList}">
+							<td th:text="${user.username}"></td>
+							<td class="d-inline-block text-truncate"
+								style="max-width: 150px;"
+								th:text="${user.password}">
+							</td>
+							<td th:text="${user.authority}"></td>
+							<td>
+								<form th:method="delete" action="#" 
+									  th:action="@{/users/deleteConfirm/{id}(id=*{id})}">
+									<button class="btn btn-link">削除</button>
+								</form>								
+							</td>	
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+
+
+	<!-- フッター -->
+	<footer th:replace="layouts/common::footer"></footer>
+	<!--フッター終わり  -->
+
+
+</body>
+</html>

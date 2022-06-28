@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/common::head"></head>
+<body>
+	<!-- ヘッダー -->
+	<header th:replace="layouts/common::header"></header>
+	<!--ヘッダー終わり  -->
+	<main>
+		<div class="container">
+			<h2 class="display-6 text-center mb-4">Product List</h2>
+			<h3 class="bg-info text-center" th:text="${createComplete}"></h3>
+			<h3 class="bg-info text-center" th:text="${update}"></h3>
+			<h3 class="bg-danger text-center" th:text="${delete}"></h3>
+			<div class="text-end">
+				<a class="btn btn-primary" href="./create.html" th:href="@{/product/create}">新規登録</a>
+			</div>
+			<div class="table-responsive">
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th style="width: 5%;">ID</th>
+							<th style="width: 18%;">カテゴリー</th>
+							<th style="width: 18%;">商品名</th>
+							<th style="width: 18%;">価格</th>
+							<th style="width: 8%;"></th>
+							<th style="width: 8%;"></th>
+							<th style="width: 8%;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="p : ${productList}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.category}"></td>
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.price}"></td>
+							<td>
+								<a href="./show.html" th:href="@{/product/show/{id}(id=${p.id})}" 
+									class="btn btn-link">詳細</a>
+							</td>
+							<td>
+								<a href="./edit.html" th:href="@{/product/edit/{id}(id=*{p.id})}"
+									class="btn btn-link">編集</a>
+							</td>
+							<td><a href="./delete_confirm" th:href="@{/product/delete/{id}(id=*{p.id})}"
+									class="btn btn-link">削除</a></td>	
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+
+
+	<!-- フッター -->
+	<footer th:replace="layouts/common::footer"></footer>
+	<!--フッター終わり  -->
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/common::head"></head>
+<body>
+	<!-- ヘッダー -->
+	<header th:replace="layouts/common::header"></header>
+	<!--ヘッダー終わり  -->
+	
+<main>
+		<div class="container">
+			<h2 class="display-6 text-center mb-4">User Creation</h2>
+			
+			<div class="text-end">
+				<a class="btn btn-link" href="../list.html" th:href="@{/users}">トップページへ</a>
+			</div>
+			
+			<form method="post" th:action="@{/users/creationConfirm}" th:object="${userForm}">
+			<div class="mt-3">
+			<label for="usernameInput" class="form-label">ユーザー名</label>
+			<input type="text" id="usernameInput" class="form-control"
+				 th:field="*{username}" th:value="*{username}"
+				 th:classappend="${#fields.hasErrors('username')} ? is-invalid">
+			<p class="invalid-feedback"
+			 th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+			</div>
+			
+			<div class="mt-3">
+			<label for="password" class="form-label">パスワード</label>
+			<input type="password" id="pasword" class="form-control"
+				 th:field="*{password}" 
+				 th:classappend="${#fields.hasErrors('password')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+			</div>
+			
+			<div class="mt-3">
+			<label class="form-label" for="authorityRadio">権限</label>
+			<div id="authorityRadio">
+				<div class="form-check">
+					<input class="form-check-input" type="radio" id="authorityAdminRadio" th:field="*{authority}" value="ADMIN">
+					<label class="form-check-label" for="authorityAdminRadio"
+					th:classappend="${#fields.hasErrors('authority')} ? is-invalid">ADMIN</label>
+					<p class="invalid-feedback" th:if="${#fields.hasErrors('authority')}" th:errors="*{authority}"></p>
+				</div>
+			
+			</div>
+			
+			<div id="authorityRadio">
+				<div class="form-check">
+					<input class="form-check-input" type="radio" id="authorityUserRadio" th:field="*{authority}" value="USER">
+					<label class="form-check-label" for="authorityUserRadio"
+					th:classappend="${#fields.hasErrors('authority')} ? is-invalid">USER</label>
+					<p class="invalid-feedback" th:if="${#fields.hasErrors('authority')}" th:errors="*{authority}"></p>
+				</div>
+			
+			</div>
+			</div>
+			
+			<div class="mt-3 d-flex justify-content-evenly">
+			<a href="./list.html" th:href="@{/users}" class="btn btn-secondary">Back</a>
+			<button type="submit" class="btn btn-primary">Next</button>
+			
+			</div>
+			</form>
+
+		</div>
+	</main>
+
+
+	<!-- フッター -->
+	<footer th:replace="layouts/common::footer"></footer>
+	<!--フッター終わり  -->
+
+
+</body>
+</html>
