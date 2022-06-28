@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/common::head"></head>
+<body>
+	<!-- ヘッダー -->
+	<header th:replace="layouts/common::header"></header>
+	<!--ヘッダー終わり  -->
+
+
+	<main>
+		<h1 class="text-center">Item List</h1>
+		<div class="container">
+			<div class="row row-cols-4">
+			<div class="card col mt-3"  th:each="product : ${products}">
+				<svg class="bd-placeholder-img" width="100%" height="50%"
+					xmlns="http://www.w3.org/2000/svg" 
+					role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+				<title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" />
+				<text x="50%" y="50%" fill="#eceeef" dy=".3em">image</text></svg>
+				<div class="card-body">
+					<p class="card-title opacity-50" th:text="${product.category}"></p>
+					<h5 class="card-title" th:text="${product.name}">Card title</h5>
+					<p class="card-text" th:text="'¥' + ${product.price} + '円'"></p>
+					<p class="card-text d-inline-block text-truncate" style="max-width: 200px;" th:text="${product.detail}"></p>
+					<div >
+					<a class="btn btn-link" href="#" th:href="@{/shop/show/{id}(id=*{product.id})}">詳細</a>
+					<a href="#" class="btn btn-primary">カートに入れる</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+	<!-- フッター -->
+	<footer th:replace="layouts/common::footer"></footer>
+	<!--フッター終わり  -->
+
+
+</body>
+</html>

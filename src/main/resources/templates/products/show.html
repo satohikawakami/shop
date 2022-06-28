@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/common::head"></head>
+<body>
+	<!-- ヘッダー -->
+	<header th:replace="layouts/common::header"></header>
+	<!--ヘッダー終わり  -->
+	<main>
+		<div class="container">
+			<h2 class="display-6 text-center">Product Details</h2>
+			<div class="row featurette mt-6">
+				<div class="col-md-7 order-md-2 mt-3">
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-4"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">カテゴリー
+						</span> <span th:text="${product.category}"></span>
+						</label>
+					</div>
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-3"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">商品名
+						</span> <span th:text="${product.name}"></span>
+						</label>
+					</div>
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-3"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">価格
+						</span> <span th:text="${product.price + '円'}"></span>
+						</label>
+					</div>
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-3"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">説明
+						</span> <span th:text="${product.detail}"></span>
+						</label>
+					</div>
+					<div class="d-flex justify-content-end">
+						
+							 <span class="d-block small">
+							 	<a class="btn btn-link" href="./index.html" th:href="@{/product/index}">戻る</a>
+							 </span>
+							 <span class="d-block small">
+							 	<a class="btn btn-link">編集</a>
+							 </span>
+							 <span class="d-block small">
+							 	<a class="btn btn-link">削除</a>
+							 </span>
+						
+					</div>
+				</div>
+				<div class="col-md-5 order-md-1 mt-3">
+					<svg
+						class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+						width="500" height="500" xmlns="http://www.w3.org/2000/svg"
+						role="img" aria-label="Placeholder: 500x500"
+						preserveAspectRatio="xMidYMid slice" focusable="false">
+						<title>Placeholder</title><rect width="100%" height="100%"
+							fill="#eee" />
+						<text x="50%" y="50%" fill="#aaa" dy=".3em">Image</text></svg>
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+	<!-- フッター -->
+	<footer th:replace="layouts/common::footer"></footer>
+	<!--フッター終わり  -->
+
+
+</body>
+</html>
