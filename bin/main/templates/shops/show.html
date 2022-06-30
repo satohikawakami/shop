@@ -13,40 +13,38 @@
 					<div class="list-group list-group-checkable">
 						<label class="list-group-item py-4"
 							for="listGroupCheckableRadios1"> <span
-							class="d-block small opacity-50">カテゴリー
-						</span> <span th:text="${product.category}"></span>
+							class="d-block small opacity-50">カテゴリー </span> <span
+							th:text="${product.category}"></span>
 						</label>
 					</div>
 					<div class="list-group list-group-checkable">
 						<label class="list-group-item py-3"
 							for="listGroupCheckableRadios1"> <span
-							class="d-block small opacity-50">商品名
-						</span> <span th:text="${product.name}"></span>
+							class="d-block small opacity-50">商品名 </span> <span
+							th:text="${product.name}"></span>
 						</label>
 					</div>
 					<div class="list-group list-group-checkable">
 						<label class="list-group-item py-3"
 							for="listGroupCheckableRadios1"> <span
-							class="d-block small opacity-50">価格
-						</span> <span th:text="${product.price + '円'}"></span>
+							class="d-block small opacity-50">価格 </span> <span
+							th:text="${product.price + '円'}"></span>
 						</label>
 					</div>
 					<div class="list-group list-group-checkable">
 						<label class="list-group-item py-3"
 							for="listGroupCheckableRadios1"> <span
-							class="d-block small opacity-50">説明
-						</span> <span th:text="${product.detail}"></span>
+							class="d-block small opacity-50">説明 </span> <span
+							th:text="${product.detail}"></span>
 						</label>
 					</div>
 					<div class="d-flex justify-content-end mt-3">
-						
-							 <span class="d-block small">
-							 	<a class="btn btn-link" href="./shops/show.html" th:href="@{/shop/index}">一覧へ戻る</a>
-							 </span>
-							 <span class="d-block small">
-							 	<a class="btn btn-primary">カートに入れる</a>
-							 </span>
-							 
+
+						<span class="d-block small"> <a class="btn btn-link"
+							href="./shops/show.html" th:href="@{/shop/index}">一覧へ戻る</a>
+						</span> <span class="d-block small"> <a class="btn btn-primary">カートに入れる</a>
+						</span>
+
 					</div>
 				</div>
 				<div class="col-md-5 order-md-1 mt-3">
@@ -61,8 +59,24 @@
 
 				</div>
 			</div>
+			<hr>
 		</div>
 	</main>
+
+	<!--レビュー  -->
+	<div class="container">
+		<h2 class="display-6 text-center">REVIEW</h2>
+		<div th:each="r : ${product.reviews}">
+				<div class="card border-success mb-3" style="max-width: 100%;">
+					<div class="card-header bg-transparent border-success" th:text="${r.date}">購入日</div>
+					<div class="card-body text-success">
+						<p class="card-text" th:text="${r.contents}">内容</p>
+					</div>
+					<div class="card-footer bg-transparent border-success" th:text="${r.name}">お名前</div>
+				</div>
+			</div>
+</div>
+	<!--レビュー終わり  -->
 
 
 	<!-- フッター -->

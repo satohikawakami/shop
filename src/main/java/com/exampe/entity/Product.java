@@ -1,6 +1,6 @@
 package com.exampe.entity;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,5 +27,5 @@ public class Product {
 	private String detail;
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private Collection<Review> reviews;
+	private List<Review> reviews;
 }
