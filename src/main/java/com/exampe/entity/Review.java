@@ -1,31 +1,32 @@
 package com.exampe.entity;
 
-import java.util.Collection;
+import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
 
 @Entity
-@Table(name = "product2")
 @Data
-
-public class Product {
+@Table(name = "review3")
+public class Review {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String category;
-	private String name;
-	private Integer price;
-	private String detail;
 	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private Collection<Review> reviews;
+	private String name;
+	private String contents;
+	private LocalDateTime date;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
+	
 }
