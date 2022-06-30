@@ -66,7 +66,10 @@
 	<!--レビュー  -->
 	<div class="container">
 		<h2 class="display-6 text-center">REVIEW</h2>
-		<div th:each="r : ${product.reviews}">
+		<div class="text-end">
+				<a class="btn btn-primary" href="./reviewForm.html" th:href="@{/review/form/}">NewPost</a>
+			</div>
+		<div class="mt-4" th:each="r : ${product.reviews}">
 				<div class="card border-success mb-3" style="max-width: 100%;">
 					<div class="card-header bg-transparent border-success" th:text="${r.date}">購入日</div>
 					<div class="card-body text-success">
