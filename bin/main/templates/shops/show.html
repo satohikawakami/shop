@@ -67,7 +67,7 @@
 	<div class="container">
 		<h2 class="display-6 text-center">REVIEW</h2>
 		<div class="text-end">
-				<a class="btn btn-primary" href="./reviewForm.html" th:href="@{/review/form/}">NewPost</a>
+				<a class="btn btn-primary" href="./reviewForm.html" th:href="@{/review/form/{id}(id=*{id})}">NewPost</a>
 			</div>
 		<div class="mt-4" th:each="r : ${product.reviews}">
 				<div class="card border-success mb-3" style="max-width: 100%;">

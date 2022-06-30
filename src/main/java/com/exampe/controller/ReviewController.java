@@ -1,16 +1,16 @@
 package com.exampe.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.exampe.entity.Product;
+import com.exampe.entity.Review;
 import com.exampe.entity.ReviewForm;
 import com.exampe.service.ReviewService;
 
@@ -24,10 +24,11 @@ public class ReviewController {
 	
 	private final ReviewService reviewService;
 	
-	@GetMapping("form")
-	public String form(Model model, ReviewForm reviewForm) {
-		List<Product> products = reviewService.findAll();
-		model.addAttribute("products", products);
+	@GetMapping("form/{id}")
+	public String form(@PathVariable Integer id,
+			ReviewForm reviewForm,
+			Model model){
+		model.addAttribute("product", reviewService.findById(id));
 		return "shops/reviewForm";
 	}
 	
@@ -40,5 +41,26 @@ public class ReviewController {
 		}
 			return "shops/reviewConfirm";
 		}
-	}
+	
+	@PostMapping("reviewComplete")
+	public String reviewComplete(@Validated ReviewForm reviewForm,
+			BindingResult result,
+			RedirectAttributes redirectAttributes) {
+		if(result.hasErrors()) {
+			return "shops/index";
+		}
+		
+			Review review = new Review();
+			review.setProduct_id(reviewForm.getProduct_id());
+			review.setUsername(reviewForm.getUserName());
+			review.setDate(reviewForm.getDate());
+			review.setContents(reviewForm.getContents());
+			
+			reviewService.save(review);
+			redirectAttributes.addFlashAttribute("reviewComplete", "レビューを受け付けました。ご協力ありがとうございました。");
+			return "redirect:/shop/index";
+		}
+	
+}
+
 

@@ -1,7 +1,5 @@
 package com.exampe.entity;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,10 +21,21 @@ public class Review {
 	
 	private String name;
 	private String contents;
-	private LocalDateTime date;
+	private String date;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
+
+	public void setProduct_id(Integer product_id) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void setUsername(String userName) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
 	
 }

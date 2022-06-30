@@ -10,4 +10,6 @@ public class ReviewForm {
 	private String name;
 	private String contents;
 	private String date;
+	private String userName;
 }
+
