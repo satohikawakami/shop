@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="https://www.thymeleaf.org"
-				xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:fragment="head">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,130 +13,106 @@
 </head>
 <body>
 
-<!-- ヘッダー -->
-<div class="container" th:fragment="header">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="./layout/common.html" th:href="@{/}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <span class="fs-4">K-SHOP</span>
-      </a>
+	<!-- ヘッダー -->
+	<div class="container" th:fragment="header">
+		<header
+			class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+			<a href="./layout/common.html" th:href="@{/}"
+				class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+				<span class="fs-4">K-SHOP</span>
+			</a>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="./shops/index.html" th:href="@{/shop/index}" class="nav-link px-2 link-secondary">Shop</a></li>
-        <li sec:authorize="hasAuthority('ADMIN')">
-        <a href="./users/list.html" th:href="@{/users}" class="nav-link px-2 link-dark">UserList</a></li>
-        <li><a href="./products/index.html" th:href="@{/product/index}" class="nav-link px-2 link-dark">Product List</a></li>
-       
-        <li><a href="./inquirys/inquiryForm.html" th:href="@{/contact/inquiry}" class="nav-link px-2 link-dark">Contact</a></li>
-      </ul>
+			<ul
+				class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+				<li><a href="./shops/index.html" th:href="@{/shop/index}"
+					class="nav-link px-2 link-secondary">Shop</a></li>
+				<li sec:authorize="hasAuthority('ADMIN')"><a
+					href="./users/list.html" th:href="@{/users}"
+					class="nav-link px-2 link-dark">UserList</a></li>
+				<li><a href="./products/index.html" th:href="@{/product/index}"
+					class="nav-link px-2 link-dark">Product List</a></li>
 
-      <div class="col-md-3 text-end">
-        <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button> -->
-        <a href="./logout.html" th:href="@{/logout}" class="btn btn-outline-primary me-2">ログアウト</a>
-      </div>
-    </header>
-  </div>
-<!--ヘッダー終わり  -->
-<!-- メイン -->
-<div class="container px-4 py-5" id="custom-cards">
-    <h2 class="pb-2 border-bottom">Custom cards</h2>
+				<li><a href="./inquirys/inquiryForm.html"
+					th:href="@{/contact/inquiry}" class="nav-link px-2 link-dark">Contact</a></li>
+			</ul>
 
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>Earth</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>3d</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+			<div class="col-md-3 text-end">
+				<!-- <button type="button" class="btn btn-outline-primary me-2">Login</button> -->
+				<a href="./logout.html" th:href="@{/logout}"
+					class="btn btn-outline-primary me-2">ログアウト</a>
+			</div>
+		</header>
+	</div>
+	<!--ヘッダー終わり  -->
+	<!-- メイン -->
 
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
-            	<a href="./index.heml" th:href="@{/product/index}">
-            		Much longer title that wraps to multiple lines
-            	</a>
-            </h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>Pakistan</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>4d</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+	<div class="container">
+	  <h2 class="pb-2  text-center">Welcome</h2>
+		<div class="d-flex justify-content-evenly">
+			<div class="card border-primary mb-3 col-8" style="max-width: 20rem;">
+				<div class="card-header">shop</div>
+				<div class="card-body text-primary text-center">
+					<a href="./shops/index.html" th:href="@{/shop/index}">
+					<img th:src="@{/images/shop.jpeg}">
+					</a>
+				</div>
+			</div>
+			<div class="card border-success mb-3" style="max-width: 20rem;">				
+				<div class="card-header">admin</div>
+				<div class="card-body text-success">
+					<a href="./products/index.html" th:href="@{/product/index}">
+					<img th:src="@{/images/admin.png}">
+					</a>
+				</div>
+			</div>
+			<div class="card border-warning mb-3 col-8" style="max-width: 20rem;">				
+				<div class="card-header">contact</div>
+				<div class="card-body text-success text-center">
+					<a href="#" th:href="@{/contact/inquiry}">
+					<img th:src="@{/images/contact.jpeg}">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>California</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>5d</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-<!--  メイン終わり-->
+	<!--  メイン終わり-->
 
-<!--  フッター-->
-<div class="container" th:fragmen="footer">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2021 Company, Inc</p>
+	<!--  フッター-->
+	<div class="container" th:fragmen="footer">
+		<footer
+			class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<p class="col-md-4 mb-0 text-muted">&copy; 2021 Company, Inc</p>
 
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    </a>
+			<a href="/"
+				class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+				<svg class="bi me-2" width="40" height="32">
+					<use xlink:href="#bootstrap" /></svg>
+			</a>
 
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
-  </footer>
-  	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous">
-	</script>
-</div>
+			<ul class="nav col-md-4 justify-content-end">
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">Home</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">Features</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">Pricing</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">FAQs</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">About</a></li>
+			</ul>
+		</footer>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous">
+			
+		</script>
+	</div>
 
-<!--  フッター終わり-->
+	<!--  フッター終わり-->
 
 
 
