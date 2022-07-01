@@ -11,11 +11,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name = "product2")
 @Data
-
+@ToString(exclude="reviews")
 public class Product {
 	
 	@Id
@@ -25,6 +26,8 @@ public class Product {
 	private String name;
 	private Integer price;
 	private String detail;
+	
+	
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Review> reviews;

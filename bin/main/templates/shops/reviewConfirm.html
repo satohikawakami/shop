@@ -7,6 +7,9 @@
 	<div class="container">
 		<h1 class="mt-3 text-center">Review Confirmation</h1>
 		<div th:object="${reviewForm}">
+		
+		<p th:text="*{id}"></p>
+		
 			<div class="mt-3">
 				<label class="form-label">商品名</label>
 				<p class="form-control" th:text="*{name}"></p>
@@ -28,7 +31,7 @@
 		
 
 		  <div class="mt-3 d-flex justify-content-evenly">
-			<form method="post" action="#" th:action="@{/review/form/{id}(id=*{id})}"
+			<!-- <form method="post" action="#" th:action="@{/review/form/{id}(id=*{id})}"
 				>
 				<input type="hidden" th:field="*{name}">
 				<input type="hidden" th:field="*{contents}"> 
@@ -36,7 +39,7 @@
 				<input type="hidden" th:field="*{product_id}">
 				
 				<button class="btn btn-secondary" type="submit">Back</button>
-			</form>
+			</form> -->
 			
 			<form method="post" action="#" th:action="@{/review/reviewComplete}">
 			<input type="hidden" th:field="*{name}">
@@ -44,12 +47,14 @@
 				<input type="hidden" th:field="*{userName}">
 				<input type="hidden" th:field="*{contents}"> 
 				<input type="hidden" th:field="*{date}"> 
-				<input type="hidden" th:field="*{product_id}">
+				<input type="hidden" th:field="*{id}">
+				<!-- <input type="hidden" th:field="*{procuct_id}"> -->
 			<button class="btn btn-primary" type="submit">Send</button>
 			</form>
 
 			</div> 
 		</div>
+		
 
 
 

@@ -6,7 +6,7 @@ import lombok.Data;
 public class ReviewForm {
 
 	private Integer id;
-	private Integer product_id;
+	private Product productId;
 	private String name;
 	private String contents;
 	private String date;

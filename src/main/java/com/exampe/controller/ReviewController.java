@@ -51,15 +51,16 @@ public class ReviewController {
 		}
 		
 			Review review = new Review();
-			review.setProduct_id(reviewForm.getProduct_id());
-			review.setUsername(reviewForm.getUserName());
+			review.setId(reviewForm.getId());
+			review.setName(reviewForm.getUserName());
 			review.setDate(reviewForm.getDate());
 			review.setContents(reviewForm.getContents());
 			
-			reviewService.save(review);
+			reviewService.saveAndFlush(review);
 			redirectAttributes.addFlashAttribute("reviewComplete", "レビューを受け付けました。ご協力ありがとうございました。");
 			return "redirect:/shop/index";
 		}
+	
 	
 }
 

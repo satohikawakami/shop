@@ -31,4 +31,9 @@ public class ReviewService {
 	public Review save(Review review) {
 		return reviewRepository.save(review);
 	}
+
+	public Review saveAndFlush(Review review) {
+		return reviewRepository.saveAndFlush(review);
+		
+	}
 }
