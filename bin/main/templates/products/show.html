@@ -44,10 +44,10 @@
 							 	<a class="btn btn-link" href="./index.html" th:href="@{/product/index}">戻る</a>
 							 </span>
 							 <span class="d-block small">
-							 	<a class="btn btn-link">編集</a>
+							 	<a class="btn btn-link" th:href="@{/product/edit/{id}(id=*{id})}">編集</a>
 							 </span>
 							 <span class="d-block small">
-							 	<a class="btn btn-link">削除</a>
+							 	<a class="btn btn-link" th:href="@{/product/delete/{id}(id=*{id})}">削除</a>
 							 </span>
 						
 					</div>
