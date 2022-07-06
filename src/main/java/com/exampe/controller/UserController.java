@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.exampe.entity.UserForm;
+import com.exampe.forms.UserForm;
 import com.exampe.service.UserService;
 
 import lombok.RequiredArgsConstructor;

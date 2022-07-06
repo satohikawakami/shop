@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exampe.entity.Product;
-import com.exampe.entity.ProductForm;
+import com.exampe.forms.ProductForm;
 import com.exampe.service.ProductService;
 
 @Controller
@@ -24,12 +24,12 @@ import com.exampe.service.ProductService;
 public class ProductController {
 
 	private final ProductService productService;
-	
+
 	@Autowired
 	public ProductController(ProductService productService) {
 		this.productService = productService;	
-		}
-	
+	}
+
 
 	@GetMapping("/index")
 	public String index(Model model){
@@ -90,7 +90,7 @@ public class ProductController {
 		model.addAttribute("productForm", productService.findById(id));
 		return "products/edit";
 	}
-	
+
 	@PostMapping("/edit/{id}")
 	public String editBack(@PathVariable Integer id, Model model) {	
 		model.addAttribute("productForm", productService.findById(id));
@@ -106,36 +106,35 @@ public class ProductController {
 		}
 		return "products/edit_confirm";
 	}
-	
+
 	@PostMapping("/update/{id}")
 	public String update(@PathVariable Integer id,
 			ProductForm productForm,
 			RedirectAttributes redirectAttributes) {
-		
+
 		Product product = new Product();
 		product.setId(productForm.getId());
 		product.setCategory(productForm.getCategory());
 		product.setName(productForm.getName());
 		product.setPrice(productForm.getPrice());
 		product.setDetail(productForm.getDetail());	
-		
-		product.setId(id);
+
 		productService.save(product);
 		redirectAttributes.addFlashAttribute("update", "更新が完了しました");
 		return "redirect:/product/index";
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		model.addAttribute("productForm", productService.findById(id));
 		return "products/delete_confirm";
 	}
-	
+
 	@PostMapping("/delete_complete/{id}")
 	public String delete_complete(@PathVariable Integer id,
 			RedirectAttributes redirectAttributes,
 			Model model) {
-		
+
 		productService.delete(id);
 		redirectAttributes.addFlashAttribute("delete", "削除が完了しました");
 		return "redirect:/product/index";

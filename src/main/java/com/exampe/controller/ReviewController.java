@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exampe.entity.Review;
-import com.exampe.entity.ReviewForm;
+import com.exampe.forms.ReviewForm;
 import com.exampe.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;

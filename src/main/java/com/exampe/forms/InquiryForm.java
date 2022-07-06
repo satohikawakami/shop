@@ -1,4 +1,4 @@
-package com.exampe.entity;
+package com.exampe.forms;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

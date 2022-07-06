@@ -1,4 +1,6 @@
-package com.exampe.entity;
+package com.exampe.forms;
+
+import com.exampe.entity.Product;
 
 import lombok.Data;
 
