@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="layouts/common::head"></head>
+<head th:replace="layouts/common::head">
+<script th:src="@{/js/main.js}"></script>
+</head>
 <body>
 	<!-- ヘッダー -->
 	<header th:replace="layouts/common::header"></header>
@@ -9,28 +11,87 @@
 
 	<main>
 		<div class="container">
-		<h1 class="text-center">Item List</h1>
-		<h2 class="bg-info text-center" th:text="${reviewComplete}">レビューのフラッシュメッセージ</h2>
+			<h1 class="text-center">Item List</h1>
+			<h2 class="bg-info text-center" th:text="${reviewComplete}">レビューのフラッシュメッセージ</h2>
 			<div class="row row-cols-4">
-			<div class="card col mt-5"  th:each="product : ${products}">
-				<img th:src="@{/images/海.jpeg}">
-				<div class="card-body">
-					<p class="card-title opacity-50" th:text="${product.category}"></p>
-					<h5 class="card-title" th:text="${product.name}">Card title</h5>
-					<p class="card-text" th:text="'¥' + ${product.price} + '円'"></p>
-					<p class="card-text d-inline-block text-truncate" style="max-width: 200px;" th:text="${product.detail}"></p>
-					<div >
-					<a class="btn btn-link" href="#" th:href="@{/shop/show/{id}(id=*{product.id})}">詳細</a>
-					<a href="#" class="btn btn-primary">カートに入れる</a>
+				<div class="card col mt-5" th:each="product : ${products}">
+					<img th:src="@{/images/海.jpeg}">
+					<div class="card-body">
+						<p class="card-title opacity-50" th:text="${product.category}"></p>
+						<h5 class="card-title" th:text="${product.name}">Card title</h5>
+						<p class="card-text" th:text="'¥' + ${product.price} + '円'"></p>
+						<p class="card-text d-inline-block text-truncate"
+							style="max-width: 200px;" th:text="${product.detail}"></p>
+						<div>
+							<a class="btn btn-link" href="#"
+								th:href="@{/shop/show/{id}(id=*{product.id})}">詳細</a> <a
+								href="#" class="btn btn-primary">カートに入れる</a>
+						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 	</main>
 
+	<div id="open" >詳細をみる</div>
+	
+	<div id="mask" class="hidden"></div>
 
+	<section id="modal" class="hidden" th:each="product : ${products}" >
+		<div class="container">
+			<h2 class="display-6 text-center">Product Details</h2>
+			<div class="row featurette mt-6">
+				<div class="col-md-7 order-md-2 mt-3">
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-4"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">カテゴリー </span> <span
+							th:text="${product.category}"></span>
+						</label>
+					</div>
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-3"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">商品名 </span> <span
+							th:text="${product.name}"></span>
+						</label>
+					</div>
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-3"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">価格 </span> <span
+							th:text="${product.price + '円'}"></span>
+						</label>
+					</div>
+					<div class="list-group list-group-checkable">
+						<label class="list-group-item py-3"
+							for="listGroupCheckableRadios1"> <span
+							class="d-block small opacity-50">説明 </span> <span
+							th:text="${product.detail}"></span>
+						</label>
+					</div>
+					<div class="d-flex justify-content-end mt-3">
 
+						<span class="d-block small"> <a class="btn btn-link"
+							href="./shops/show.html" th:href="@{/shop/index}">一覧へ戻る</a>
+						</span> <span class="d-block small"> <a class="btn btn-primary">カートに入れる</a>
+						</span>
+
+					</div>
+				</div>
+				<div class="col-md-5 order-md-1 mt-3">
+					<img th:src="@{/images/冷やし中華.png}">
+
+				</div>
+			</div>
+			<hr>
+		</div>
+		
+		<div id="close">閉じる</div>
+	</section>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+	
 
 	<!-- フッター -->
 	<footer th:replace="layouts/common::footer"></footer>
